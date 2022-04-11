@@ -1,3 +1,4 @@
+#Deliverable 1
 #load dplyr package
 library(dplyr)
 
@@ -12,15 +13,15 @@ summary(Mecha_lm)
 
 #Deliverable 2
 #Read the Suspension_Coil.csv file as a table
-Suspension<-read.csv(file = 'Suspension_coil.csv',check.names = F,stringsAsFactors = F)
+suspension_coil_df <- read.csv(file = 'Suspension_Coil.csv', check.names = F, stringsAsFactors = F)
 
 #Create a total_summary dataframe using the summarize() function
 #to get the mean, median, variance, and standard deviation of the PSI column
-total_summary <- Suspension %>% summarize(Mean=mean(PSI),Median=(PSI),Variance=var(PSI),SD=sd(PSI))
+total_summary <- suspension_coil_df %>% summarize(Mean = mean(PSI), Median = median(PSI), Variance = var(PSI), SD = sd(PSI))
 
 #Create a lot_summary dataframe using groupby() and summarize() functions 
 #to group each lot by the mean, median, variance, and standard deviation of the PSI column
-lot_summary <-Suspension %>% group_by(Manufacturing_Lot)%>% summarize(Mean=mean(PSI),Median=(PSI),Variance=var(PSI),SD=sd(PSI))
+lot_summary <- suspension_coil_df %>% group_by(Manufacturing_Lot) %>% summarize(Mean = mean(PSI), Median = median(PSI), Variance = var(PSI), SD = sd(PSI), .groups = 'keep')
 
 
 #Deliverable 3
